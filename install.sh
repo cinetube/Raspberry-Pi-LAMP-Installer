@@ -30,11 +30,11 @@ apt-get install fail2ban -y
 
 #check current webserver status on the machine
 
-PORT_CHECK = (sudo lsof -nPi | grep ":80 (LISTEN)" | wc -l)
+PORT_CHECK=$(sudo lsof -nPi | grep ":80 (LISTEN)" | wc -l )  ; echo $PORT_CHECK
 
 
 if [ $PORT_CHECK > 0 ] ;then
- echo -n "Found some processes running on port 80."
+echo -n "Found some processes running on port 80."
 echo -n "Do you want to check and remove any previous webserver installation (y/n)? "
 read answer
 
@@ -91,9 +91,9 @@ sudo chmod 744 /var/www
 #generate test files file
 echo -n "Generating test files"
 echo "<?php phpinfo(); ?>" > /var/www/html/index.php
-echo 'Nginx work’s !' > /var/www/html/index.html
+echo "Nginx work’s!" > /var/www/html/index.html
 
-echo -n Restarting Nginx / php-fpm"
+echo -n "Restarting Nginx / php-fpm"
 service nginx restart
 service php7.3-fpm restart
 
@@ -129,8 +129,3 @@ echo -n "Please open a browser a verify the following 3 pages are showing up pro
 echo -n "http://192.168.1.1/index.html"
 echo -n "http://192.168.1.1/index.php"
 echo -n "http://192.168.1.1/phpmyadmin"
-
-
-
-
-
