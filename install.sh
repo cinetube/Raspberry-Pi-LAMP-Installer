@@ -58,7 +58,7 @@ update-rc.d php7.3-fpm defaults
 # change settings on vhosts for automatic redirection to the “index.php” files for the site folders
 echo -n "Setting up Nginx configuration"
 sed -i 's/index index.html index.htm index.nginx-debian.html;/index index.html index.htm index.php;/g' /etc/nginx/sites-available/default
-sed -i 's/server_name _;/server_name localhost;/g /etc/nginx/sites-available/default
+sed -i 's/server_name _;/server_name localhost;/g' /etc/nginx/sites-available/default
 
 # configuring php-fpm / Nginx
 
@@ -85,7 +85,7 @@ sudo chmod 744 /var/www
 #generate test files file
 echo -n "Generating test files"
 echo "<?php phpinfo(); ?>" > /var/www/html/index.php
-echo "Nginx work’s!" > /var/www/html/index.html
+echo "Nginx works!" > /var/www/html/index.html
 
 echo -n "Restarting Nginx/php-fpm"
 service nginx restart
