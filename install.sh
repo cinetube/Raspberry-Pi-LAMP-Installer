@@ -93,7 +93,7 @@ echo -n "Generating test files"
 echo "<?php phpinfo(); ?>" > /var/www/html/index.php
 echo "Nginx work’s!" > /var/www/html/index.html
 
-echo -n "Restarting Nginx / php-fpm"
+echo -n "Restarting Nginx/php-fpm"
 service nginx restart
 service php7.3-fpm restart
 
@@ -107,8 +107,6 @@ mysql_secure_installation
 
 service mysql restart
 
-
-
 # PhpMyAdmin
 read -p "Do you want to install PhpMyAdmin? <y/N> " prompt
 if [ "$prompt" = "y" ]; then
@@ -121,11 +119,3 @@ if [ "$prompt" = "y" ]; then
 	
 	echo "http://192.168.XXX.XXX/phpmyadmin to enter PhpMyAdmin"
 fi
-
-apt-get -y autoremove
-
-
-echo -n "Please open a browser a verify the following 3 pages are showing up properly"
-echo -n "http://192.168.1.1/index.html"
-echo -n "http://192.168.1.1/index.php"
-echo -n "http://192.168.1.1/phpmyadmin"
