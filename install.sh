@@ -1,10 +1,3 @@
-#########################################################################
-#LAMP for Raspberry Pi                                                  #
-#This script will install Nginx, PHP 7, FTP, and MySQL (MariaDB).       #
-#This script was written by Paolo Porqueddu                             #
-#Visit my website for more interesting project   www.paolo9785.com      #
-#########################################################################
-
 #!/bin/bash
 
 if [ "$(whoami)" != "root" ]; then
@@ -66,7 +59,8 @@ update-rc.d php7.3-fpm defaults
 echo -n "Setting up Nginx configuration"
 sed -i 's/index index.html index.htm index.nginx-debian.html;/index index.html index.htm index.php;/g' /etc/nginx/sites-available/default
 sed -i 's/server_name _;/server_name localhost;/g /etc/nginx/sites-available/default
-#configuring php-fpm / Nginx
+
+# configuring php-fpm / Nginx
 
 sed -i 's/^;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php/7.3/fpm/php.ini
 sed -i 's/# server_names_hash_bucket_size/server_names_hash_bucket_size/' /etc/nginx/nginx.conf
